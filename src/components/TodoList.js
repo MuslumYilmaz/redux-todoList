@@ -2,6 +2,7 @@ import react, { Component } from 'react';
 import { connect } from 'react-redux';
 import { deleteTodoAction, updateTodoAction } from '../actions/postActions';
 import FormComponent from './FormComponent';
+import '../TodoList.css';
 
 class TodoList extends Component {
     toggleClass(id) {
@@ -17,9 +18,9 @@ class TodoList extends Component {
         const todoList = list.length ? (
             list.map(l => {
                 return (
-                    <div className="todo-header">
+                    <div className="container">
                         <ul>
-                            <li key={l.id}>
+                            <li className="todo-list" key={l.id}>
                             <p className={l.checked ? 'check-todo': null} onClick={() => this.toggleClass(l.id)}>{ l.title}</p>
                             <button onClick={() => this.deleteTodo(l.id)}>X</button>
                             </li>
@@ -30,7 +31,7 @@ class TodoList extends Component {
         ) : (<h3>Nothing to do yet</h3>)
         return (
             <div>
-            <h2>Todo List</h2>
+            <h2 className="header">Todo List</h2>
             <FormComponent />
             {todoList}
             </div>

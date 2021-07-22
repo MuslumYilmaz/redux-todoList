@@ -1,6 +1,7 @@
 import react, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addTodoAction } from '../actions/postActions';
+import '../Form.css';
 
 class FormComponent extends Component {
     state = {
@@ -26,9 +27,9 @@ class FormComponent extends Component {
   
     render() {
       return (
-        <form onSubmit={this.handleSubmit}>
-            <input value={this.state.value} onChange={this.handleChange} />
-          <input type="submit" value="Submit" />
+        <form className="input-container" onSubmit={this.handleSubmit}>
+            <input className="input-field" value={this.state.value} onChange={this.handleChange} />
+          <input className="submit" type="submit" value="Submit" />
         </form>
       );
     }
