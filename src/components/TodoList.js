@@ -9,7 +9,7 @@ class TodoList extends Component {
     }
 
     render() {
-        console.log(this.props);
+      console.log(this.props);
         const { list } = this.props;
         const todoList = list.length ? (
             list.map(l => {

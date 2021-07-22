@@ -1,4 +1,6 @@
 import react, { Component } from 'react';
+import { connect } from 'react-redux';
+import { addTodoAction } from '../actions/postActions';
 
 class FormComponent extends Component {
       state = {
@@ -13,8 +15,14 @@ class FormComponent extends Component {
     }
   
     handleSubmit(event) {
-      alert('An essay was submitted: ' + this.state.value);
       event.preventDefault();
+
+      let id = Math.floor(Math.random() * 1000);
+
+      let todo = {id, title: this.state.value};
+
+      this.props.addTodo(todo);
+      //alert('An essay was submitted: ' + this.state.value);
     }
   
     render() {
@@ -27,4 +35,10 @@ class FormComponent extends Component {
     }
   }
 
-  export default FormComponent;
+  const mapToAddTodo = (dispatch) => {
+    return {
+      addTodo: (todo) => {dispatch(addTodoAction(todo))}
+    }
+  }
+
+  export default connect(null, mapToAddTodo)(FormComponent);

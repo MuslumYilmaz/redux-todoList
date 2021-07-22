@@ -12,7 +12,16 @@ const rootReducer = (state = initState, action) => {
             ...state,
             list: newList
         }
-    } 
+    }
+
+    if (action.type === "ADD_TODO") {
+         let newList = state.list.concat(action.todo);
+         return {
+             ...state,
+             list: newList
+         }
+
+    }
     return state;
 }
 
