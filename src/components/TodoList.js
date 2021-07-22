@@ -1,6 +1,7 @@
 import react, { Component } from 'react';
 import { connect } from 'react-redux';
 import { deleteTodoAction } from '../actions/postActions';
+import FormComponent from './FormComponent';
 
 class TodoList extends Component {
     deleteTodo(id) {
@@ -29,6 +30,7 @@ class TodoList extends Component {
         return (
             <div>
             <h2>Todo List</h2>
+            <FormComponent />
             {todoList}
             </div>
         )
