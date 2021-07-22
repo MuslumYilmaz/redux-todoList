@@ -1,28 +1,29 @@
 import react, { Component } from 'react';
 import { connect } from 'react-redux';
-import { deleteTodoAction } from '../actions/postActions';
+import { deleteTodoAction, updateTodoAction } from '../actions/postActions';
 import FormComponent from './FormComponent';
 
 class TodoList extends Component {
+    toggleClass(id) {
+        this.props.updateTodo(id)
+    };
+
     deleteTodo(id) {
         this.props.deleteTodo(id);
     }
 
     render() {
-      console.log(this.props);
         const { list } = this.props;
         const todoList = list.length ? (
             list.map(l => {
                 return (
                     <div className="todo-header">
-                        <div>
                         <ul>
                             <li key={l.id}>
-                            <p>{l.title}</p>
+                            <p className={l.checked ? 'check-todo': null} onClick={() => this.toggleClass(l.id)}>{ l.title}</p>
                             <button onClick={() => this.deleteTodo(l.id)}>X</button>
                             </li>
                         </ul>
-                        </div>
                     </div>
                 )
             })
@@ -45,7 +46,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        deleteTodo: (id) => {dispatch(deleteTodoAction(id))}
+        deleteTodo: (id) => {dispatch(deleteTodoAction(id))},
+        updateTodo: (id) => {dispatch(updateTodoAction(id))}
     }
 }
 

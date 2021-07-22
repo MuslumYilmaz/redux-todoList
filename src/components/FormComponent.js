@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import { addTodoAction } from '../actions/postActions';
 
 class FormComponent extends Component {
-      state = {
-        value: 'Add todo'
-      };
+    state = {
+      value: 'Add todo'
+    };
   
     handleChange = this.handleChange.bind(this);
     handleSubmit = this.handleSubmit.bind(this);
@@ -22,7 +22,6 @@ class FormComponent extends Component {
       let todo = {id, title: this.state.value};
 
       this.props.addTodo(todo);
-      //alert('An essay was submitted: ' + this.state.value);
     }
   
     render() {

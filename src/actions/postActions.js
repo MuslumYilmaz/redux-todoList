@@ -11,3 +11,10 @@ export const addTodoAction = (todo) => {
         todo
     }
 }
+
+export const updateTodoAction = (id) => {
+    return {
+        type: 'UPDATE_TODO',
+        id
+    }
+}
