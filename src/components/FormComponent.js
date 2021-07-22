@@ -5,7 +5,7 @@ import '../Form.css';
 
 class FormComponent extends Component {
     state = {
-      value: 'Add todo'
+      value: ''
     };
   
     handleChange = this.handleChange.bind(this);
@@ -23,6 +23,7 @@ class FormComponent extends Component {
       let todo = {id, title: this.state.value};
 
       this.props.addTodo(todo);
+      this.setState({value: ''});
     }
   
     render() {
